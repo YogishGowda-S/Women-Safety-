@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SafeHer – Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+</head>
+<body class="app-body">
+
+<!-- ===== APP SIDEBAR ===== -->
+<aside class="sidebar" id="sidebar">
+  <div class="sb-logo">Safe<span>Her</span></div>
+  <nav class="sb-nav">
+    <a href="#" class="sb-link active" data-panel="dashboard"><span>🏠</span>Dashboard</a>
+    <a href="#" class="sb-link" data-panel="contacts"><span>📞</span>Emergency Contacts</a>
+    <a href="#" class="sb-link" data-panel="volunteers"><span>👥</span>Volunteer Support</a>
+    <a href="#" class="sb-link" data-panel="location"><span>📍</span>My Location</a>
+    <a href="#" class="sb-link" data-panel="watch"><span>⌚</span>Smartwatch</a>
+    <a href="#" class="sb-link" data-panel="history"><span>📋</span>Alert History</a>
+  </nav>
+  <div class="sb-user" id="sbUser">
+    <div class="sb-avatar" id="sbAvatar">👩</div>
+    <div class="sb-info">
+      <div class="sb-name" id="sbName">Loading...</div>
+      <div class="sb-status">● Online</div>
+    </div>
+  </div>
+  <button class="sb-logout" id="logoutBtn">Sign Out</button>
+</aside>
+
+<!-- ===== MOBILE TOPBAR ===== -->
+<div class="mobile-topbar">
+  <button class="mobile-menu-btn" id="mobileMenuBtn">☰</button>
+  <div class="mt-logo">Safe<span>Her</span></div>
+  <button class="mobile-sos-mini" id="mobileSosMini">SOS</button>
+</div>
+
+<!-- ===== MAIN CONTENT ===== -->
+<main class="app-main" id="appMain">
+
+  <!-- ====== DASHBOARD PANEL ====== -->
+  <div class="panel active" id="panel-dashboard">
+    <div class="panel-header">
+      <div><h1 class="panel-title">Dashboard</h1><p class="panel-sub" id="dashGreeting">Good morning, stay safe today.</p></div>
+      <div class="header-actions">
+        <button class="icon-btn" id="refreshLocation" title="Refresh Location">📍</button>
+        <button class="icon-btn" id="watchAlertBtn" title="Test Watch Alert">⌚</button>
+      </div>
+    </div>
+
+    <!-- SOS BIG BUTTON -->
+    <div class="sos-zone">
+      <div class="sos-outer-ring">
+        <div class="sos-mid-ring">
+          <button class="sos-main-btn" id="sosMainBtn">
+            <span class="sos-label">SOS</span>
+            <span class="sos-hint">Hold 2s</span>
+          </button>
+        </div>
+      </div>
+      <p class="sos-caption">Hold the SOS button for 2 seconds to send an emergency alert</p>
+    </div>
+
+    <!-- QUICK STATS -->
+    <div class="stats-row">
+      <div class="stat-card sc-red"><div class="sc-ico">🚨</div><div class="sc-val" id="statAlerts">0</div><div class="sc-lbl">Total Alerts</div></div>
+      <div class="stat-card sc-purple"><div class="sc-ico">📞</div><div class="sc-val" id="statContacts">0</div><div class="sc-lbl">Contacts Saved</div></div>
+      <div class="stat-card sc-green"><div class="sc-ico">👥</div><div class="sc-val">3</div><div class="sc-lbl">Volunteers Nearby</div></div>
+      <div class="stat-card sc-blue"><div class="sc-ico">⌚</div><div class="sc-val" id="statWatch">–</div><div class="sc-lbl">Watch Status</div></div>
+    </div>
+
+    <!-- LOCATION MINI + RECENT ALERTS -->
+    <div class="dash-bottom-grid">
+      <div class="db-card">
+        <div class="db-card-header"><h3>📍 Current Location</h3><span class="live-badge">LIVE</span></div>
+        <div id="miniMap" style="height:200px;border-radius:12px;overflow:hidden;"></div>
+        <div class="loc-coords" id="dashCoords">Fetching location…</div>
+        <button class="btn-sm" id="shareLocBtn">Share Location Link</button>
+      </div>
+      <div class="db-card">
+        <div class="db-card-header"><h3>📋 Recent Alerts</h3></div>
+        <div class="alert-list" id="dashAlertList"><div class="no-data">No alerts yet. Stay safe!</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== EMERGENCY CONTACTS PANEL ====== -->
+  <div class="panel" id="panel-contacts">
+    <div class="panel-header">
+      <div><h1 class="panel-title">Emergency Contacts</h1><p class="panel-sub">Save up to 5 trusted contacts</p></div>
+    </div>
+    <div class="contacts-form-card">
+      <h3>Add New Contact</h3>
+      <div class="cf-row">
+        <div class="input-group"><label>Contact Name</label><input type="text" id="cName" placeholder="e.g. Mom, Dad, Friend"/></div>
+        <div class="input-group"><label>Relationship</label>
+          <select id="cRelation">
+            <option>Mother</option><option>Father</option><option>Sister</option><option>Brother</option>
+            <option>Friend</option><option>Partner</option><option>Other</option>
+          </select>
+        </div>
+      </div>
+      <div class="cf-row">
+        <div class="input-group"><label>Mobile Number</label><div class="phone-row"><span class="country-code">+91</span><input type="tel" id="cPhone" placeholder="98765 43210" maxlength="10"/></div></div>
+        <div class="input-group"><label>Email (Optional)</label><input type="email" id="cEmail" placeholder="contact@email.com"/></div>
+      </div>
+      <button class="btn-auth" id="addContactBtn">+ Add Contact</button>
+      <div class="form-msg" id="contactMsg"></div>
+    </div>
+    <div class="contacts-list" id="contactsList"><div class="no-data">No contacts saved yet. Add your first emergency contact above.</div></div>
+  </div>
+
+  <!-- ====== VOLUNTEER SUPPORT PANEL ====== -->
+  <div class="panel" id="panel-volunteers">
+    <div class="panel-header">
+      <div><h1 class="panel-title">Volunteer Support</h1><p class="panel-sub">Community safety network near you</p></div>
+      <button class="btn-sm" id="refreshVolunteers">🔄 Refresh</button>
+    </div>
+    <div class="volunteer-register-card">
+      <div class="vr-icon">🙋</div>
+      <div>
+        <h3>Become a Volunteer</h3>
+        <p>Join our community safety network. Receive alerts when someone nearby needs help.</p>
+      </div>
+      <button class="btn-toggle-vol" id="toggleVolunteerBtn">Register as Volunteer</button>
+    </div>
+    <div class="vol-map-section">
+      <div class="db-card-header"><h3>👥 Volunteers Near You</h3><span class="live-badge">LIVE</span></div>
+      <div id="volunteerMap" style="height:280px;border-radius:12px;overflow:hidden;margin-bottom:16px;"></div>
+    </div>
+    <div class="volunteers-grid" id="volunteersList"></div>
+  </div>
+
+  <!-- ====== LOCATION PANEL ====== -->
+  <div class="panel" id="panel-location">
+    <div class="panel-header">
+      <div><h1 class="panel-title">My Location</h1><p class="panel-sub">Real-time GPS tracking & sharing</p></div>
+      <button class="btn-sm" id="refreshLocBtn">🔄 Refresh GPS</button>
+    </div>
+    <div class="location-main">
+      <div id="fullMap" style="height:380px;border-radius:16px;overflow:hidden;margin-bottom:20px;"></div>
+      <div class="loc-info-grid">
+        <div class="loc-info-card"><div class="lic-label">Latitude</div><div class="lic-val" id="locLat">–</div></div>
+        <div class="loc-info-card"><div class="lic-label">Longitude</div><div class="lic-val" id="locLng">–</div></div>
+        <div class="loc-info-card"><div class="lic-label">Accuracy</div><div class="lic-val" id="locAcc">–</div></div>
+        <div class="loc-info-card"><div class="lic-label">Last Updated</div><div class="lic-val" id="locTime">–</div></div>
+      </div>
+      <div class="loc-actions">
+        <button class="btn-auth" id="shareLocationBtn">🔗 Copy Shareable Location Link</button>
+        <button class="btn-ghost-sm" id="startTrackingBtn">▶ Start Continuous Tracking</button>
+      </div>
+      <div class="share-link-box hidden" id="shareLinkBox">
+        <label>Your Live Location Link:</label>
+        <div class="share-link-row"><input type="text" id="shareLinkInput" readonly/><button id="copyLinkBtn">Copy</button></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SMARTWATCH PANEL ====== -->
+  <div class="panel" id="panel-watch">
+    <div class="panel-header">
+      <div><h1 class="panel-title">Smartwatch Integration</h1><p class="panel-sub">Web Push + Wearable SOS alerts</p></div>
+    </div>
+    <div class="watch-setup-card">
+      <div class="watch-visual-big">
+        <div class="wvb-screen">
+          <div class="wvb-time" id="watchTime">09:41</div>
+          <div class="wvb-sos">SOS</div>
+          <div class="wvb-hint">Hold 3s</div>
+          <div class="wvb-bat">🔋 <span id="watchBattery">–</span></div>
+        </div>
+      </div>
+      <div class="watch-steps">
+        <h3>Connect Your Smartwatch</h3>
+        <div class="watch-step ws-done" id="ws1"><span class="ws-num">1</span><div><strong>Enable Push Notifications</strong><p>Allow browser notifications to receive watch-style alerts</p></div><span class="ws-status" id="ws1Status">–</span></div>
+        <div class="watch-step" id="ws2"><span class="ws-num">2</span><div><strong>Pair Fire-Boltt / boAt Watch</strong><p>Scan QR or use companion app to link your wearable</p></div><span class="ws-status" id="ws2Status">–</span></div>
+        <div class="watch-step" id="ws3"><span class="ws-num">3</span><div><strong>Test Watch Alert</strong><p>Send a test notification to verify your setup is working</p></div><span class="ws-status" id="ws3Status">–</span></div>
+        <div class="watch-actions">
+          <button class="btn-auth" id="enablePushBtn">🔔 Enable Push Notifications</button>
+          <button class="btn-ghost-sm" id="testWatchBtn">⌚ Send Test Watch Alert</button>
+        </div>
+        <div class="form-msg" id="watchMsg"></div>
+      </div>
+    </div>
+    <div class="watch-compat">
+      <h3>Compatible Devices</h3>
+      <div class="compat-grid">
+        <div class="compat-card"><div class="cc-ico">⌚</div><h4>Fire-Boltt</h4><p>All models via BLE companion</p><span class="compat-badge supported">Supported</span></div>
+        <div class="compat-card"><div class="cc-ico">⌚</div><h4>boAt Wave</h4><p>Wave series via SafeHer app</p><span class="compat-badge supported">Supported</span></div>
+        <div class="compat-card"><div class="cc-ico">⌚</div><h4>Noise ColorFit</h4><p>ColorFit Pro series</p><span class="compat-badge soon">Coming Soon</span></div>
+        <div class="compat-card"><div class="cc-ico">⌚</div><h4>Mi Band</h4><p>Mi Band 6/7 via Mi Fitness</p><span class="compat-badge soon">Coming Soon</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== HISTORY PANEL ====== -->
+  <div class="panel" id="panel-history">
+    <div class="panel-header">
+      <div><h1 class="panel-title">Alert History</h1><p class="panel-sub">All your past SOS events</p></div>
+      <button class="btn-sm danger" id="clearHistoryBtn">🗑 Clear All</button>
+    </div>
+    <div class="history-list" id="historyList"><div class="no-data">No alert history. Great — stay safe!</div></div>
+  </div>
+
+</main>
+
+<!-- ===== SOS ACTIVE OVERLAY ===== -->
+<div class="sos-active-overlay hidden" id="sosOverlay">
+  <div class="sao-content">
+    <div class="sao-rings">
+      <div class="sao-ring sr1"></div>
+      <div class="sao-ring sr2"></div>
+      <div class="sao-ring sr3"></div>
+      <div class="sao-center">🚨</div>
+    </div>
+    <h2>SOS ALERT SENT</h2>
+    <div class="sao-steps" id="saoSteps"></div>
+    <div class="sao-coords" id="saoCoords"></div>
+    <button class="btn-cancel-sos" id="cancelSosBtn">Cancel Alert</button>
+  </div>
+</div>
+
+<!-- ===== TOAST ===== -->
+<div class="toast-container" id="toastContainer"></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

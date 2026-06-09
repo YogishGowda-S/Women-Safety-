@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SafeHer – Smart Women Safety Platform</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body class="landing-body">
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar" id="navbar">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">Safe<span>Her</span></a>
+    <button class="nav-toggle" id="navToggle"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#features">Features</a></li>
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#sdg">SDG Goals</a></li>
+      <li><a href="#team">Team</a></li>
+      <li><button class="nav-cta-btn" id="openAuthBtn">Sign In / Register</button></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero" id="home">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-orbs">
+    <div class="orb o1"></div>
+    <div class="orb o2"></div>
+    <div class="orb o3"></div>
+  </div>
+  <div class="hero-content container">
+    <div class="hero-left">
+      <div class="hero-chip">🛡️ Next-Gen Women Safety</div>
+      <h1>Safe<span class="accent">Her</span></h1>
+      <p class="hero-sub">Empowering Women's Safety Through Smart Technology</p>
+      <p class="hero-desc">Real-time SOS alerts · Live GPS sharing · Community volunteers · Smartwatch integration — everything you need to feel safe, always.</p>
+      <div class="hero-actions">
+        <button class="btn-main" id="heroGetStarted">Get Protected Now →</button>
+        <button class="btn-ghost" id="heroSosDemo">🚨 SOS Demo</button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><span class="trust-dot green"></span>Real-Time GPS</div>
+        <div class="trust-item"><span class="trust-dot pink"></span>Firebase Secured</div>
+        <div class="trust-item"><span class="trust-dot blue"></span>Push Alerts</div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="app-preview">
+        <div class="ap-topbar"><span class="ap-logo">SafeHer</span><span class="ap-status">● Live</span></div>
+        <div class="ap-sos-ring">
+          <div class="ap-sos-ripple r1"></div>
+          <div class="ap-sos-ripple r2"></div>
+          <div class="ap-sos-ripple r3"></div>
+          <button class="ap-sos-center" id="previewSosBtn">SOS</button>
+        </div>
+        <div class="ap-cards">
+          <div class="ap-card"><span>📍</span><div><b>Location</b><small>Mumbai, MH</small></div><span class="badge-live">LIVE</span></div>
+          <div class="ap-card"><span>👥</span><div><b>Volunteers</b><small>3 nearby</small></div><span class="badge-on">ON</span></div>
+          <div class="ap-card"><span>⌚</span><div><b>Watch</b><small>Connected</small></div><span class="badge-on">ON</span></div>
+        </div>
+      </div>
+      <div class="floating-pill pill-a">🚨 SOS Sent!</div>
+      <div class="floating-pill pill-b">📍 Location Shared</div>
+      <div class="floating-pill pill-c">👮 Help En Route</div>
+    </div>
+  </div>
+  <div class="scroll-cue">scroll ↓</div>
+</section>
+
+<!-- ===== FEATURES ===== -->
+<section class="section" id="features">
+  <div class="container">
+    <div class="s-chip">Core Capabilities</div>
+    <h2 class="s-title">Everything You Need to <span class="accent">Stay Safe</span></h2>
+    <div class="features-grid">
+      <div class="f-card reveal"><div class="f-ico">🚨</div><h3>One-Tap SOS</h3><p>Instantly alert emergency contacts, nearby volunteers, and emergency services with a single tap or watch press.</p></div>
+      <div class="f-card reveal"><div class="f-ico">📍</div><h3>Live GPS + Map</h3><p>Share your exact real-time coordinates and live map view. Your location updates every 5 seconds during an alert.</p></div>
+      <div class="f-card reveal"><div class="f-ico">👥</div><h3>Volunteer Network</h3><p>Trained community volunteers within 1km receive instant push notifications and can respond in real time.</p></div>
+      <div class="f-card reveal"><div class="f-ico">📞</div><h3>Emergency Contacts</h3><p>Save up to 5 trusted contacts. They receive SMS + push alerts with your live location link instantly.</p></div>
+      <div class="f-card reveal"><div class="f-ico">⌚</div><h3>Smartwatch Trigger</h3><p>Long-press your Fire-Boltt or boAt smartwatch to silently trigger SOS — no phone needed.</p></div>
+      <div class="f-card reveal"><div class="f-ico">🔐</div><h3>Firebase Auth</h3><p>Login with mobile OTP or email. Your data is encrypted, GDPR-compliant, and stored securely on Firebase.</p></div>
+      <div class="f-card reveal"><div class="f-ico">🔔</div><h3>Push Notifications</h3><p>Web push notifications simulate smartwatch alerts — volunteers and contacts get notified even if app is closed.</p></div>
+      <div class="f-card reveal"><div class="f-ico">📋</div><h3>Incident History</h3><p>Full log of every SOS event — time, location, who responded — stored securely in your account.</p></div>
+      <div class="f-card reveal"><div class="f-ico">📊</div><h3>Governance Dashboard</h3><p>Admin panel for authorities to monitor, manage, and respond to safety incidents across the network.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== HOW IT WORKS ===== -->
+<section class="section section-dark" id="how">
+  <div class="container">
+    <div class="s-chip light">Workflow</div>
+    <h2 class="s-title light">How <span class="accent">SafeHer</span> Works</h2>
+    <div class="flow-steps">
+      <div class="flow-step reveal"><div class="fs-num">01</div><div class="fs-ico">🔐</div><h3>Sign Up / Login</h3><p>Register using your mobile number (OTP) or email via Firebase Authentication.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step reveal"><div class="fs-num">02</div><div class="fs-ico">📞</div><h3>Save Contacts</h3><p>Add up to 5 emergency contacts who'll be notified immediately during an SOS.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step reveal"><div class="fs-num">03</div><div class="fs-ico">⌚</div><h3>Pair Smartwatch</h3><p>Enable web push notifications — simulates watch pairing for instant wrist alerts.</p></div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step reveal"><div class="fs-num">04</div><div class="fs-ico">🚨</div><h3>SOS Triggered</h3><p>Press button or watch trigger — GPS captured, contacts notified, volunteers alerted instantly.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SDG ===== -->
+<section class="section" id="sdg">
+  <div class="container">
+    <div class="s-chip">Global Impact</div>
+    <h2 class="s-title">Aligned with <span class="accent">UN SDGs</span></h2>
+    <div class="sdg-row">
+      <div class="sdg-card sdg-5 reveal"><div class="sdg-badge">SDG 5</div><div class="sdg-ico">♀️</div><h3>Gender Equality</h3><ul><li>Promotes women's safety</li><li>Enhances freedom of mobility</li><li>Builds equal participation</li></ul></div>
+      <div class="sdg-card sdg-9 reveal"><div class="sdg-badge">SDG 9</div><div class="sdg-ico">🏗️</div><h3>Innovation & Infrastructure</h3><ul><li>Smart wearable integration</li><li>Cloud-powered safety tech</li><li>Digital platform ecosystem</li></ul></div>
+      <div class="sdg-card sdg-16 reveal"><div class="sdg-badge">SDG 16</div><div class="sdg-ico">⚖️</div><h3>Peace & Justice</h3><ul><li>Strengthens public safety</li><li>Secure emergency reporting</li><li>Transparent governance</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TEAM ===== -->
+<section class="section section-alt" id="team">
+  <div class="container">
+    <div class="s-chip">The People</div>
+    <h2 class="s-title">Our <span class="accent">Team</span></h2>
+    <div class="team-grid">
+      <div class="t-card reveal"><div class="t-av">👩‍💻</div><h3>Team Member 1</h3><p>Full Stack Developer</p><span class="t-badge">Developer</span></div>
+      <div class="t-card reveal"><div class="t-av">👩‍💻</div><h3>Team Member 2</h3><p>UI/UX Designer</p><span class="t-badge">Designer</span></div>
+      <div class="t-card reveal"><div class="t-av">👨‍💻</div><h3>Team Member 3</h3><p>Backend & Security</p><span class="t-badge">Developer</span></div>
+      <div class="t-card reveal"><div class="t-av">👨‍💻</div><h3>Team Member 4</h3><p>IoT & Smartwatch</p><span class="t-badge">Developer</span></div>
+    </div>
+    <div class="guide-bar reveal">
+      <span class="guide-ico">👨‍🏫</span>
+      <div><div class="guide-lbl">Project Guide</div><strong>Prof. Guide Name</strong><div class="guide-dept">Department of Computer Engineering</div></div>
+      <div class="pid-tag">Project ID: CSE-2024-XXX</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer" id="contact">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="f-brand"><div class="f-logo">Safe<span>Her</span></div><p>Empowering Women's Safety Through Smart Technology.</p></div>
+      <div class="f-links"><h4>Platform</h4><a href="#features">Features</a><a href="#how">How It Works</a><a href="#sdg">SDG Goals</a><a href="app.html">Dashboard</a></div>
+      <div class="f-contact"><h4>Contact</h4><div>📧 safeher@example.com</div><div>📞 +91 98765 43210</div><div>🆔 Project ID: CSE-2024-XXX</div></div>
+    </div>
+    <div class="f-bottom">© 2024 SafeHer · Built with ❤️ for a safer world · <a href="app.html">Open App →</a></div>
+  </div>
+</footer>
+
+<!-- ===== AUTH MODAL ===== -->
+<div class="modal-overlay" id="authModal">
+  <div class="auth-box">
+    <button class="auth-close" id="authClose">×</button>
+    <div class="auth-logo">Safe<span>Her</span></div>
+    <div class="auth-tabs">
+      <button class="auth-tab active" data-tab="login">Sign In</button>
+      <button class="auth-tab" data-tab="register">Register</button>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="auth-panel active" id="panel-login">
+      <div class="method-toggle">
+        <button class="method-btn active" data-method="phone">📱 Mobile OTP</button>
+        <button class="method-btn" data-method="email">📧 Email</button>
+      </div>
+      <!-- Phone login -->
+      <div class="method-form active" id="form-phone-login">
+        <div class="input-group">
+          <label>Mobile Number</label>
+          <div class="phone-row">
+            <span class="country-code">+91</span>
+            <input type="tel" id="loginPhone" placeholder="98765 43210" maxlength="10"/>
+          </div>
+        </div>
+        <div id="recaptcha-login"></div>
+        <button class="btn-auth" id="sendOtpLogin">Send OTP</button>
+        <div class="otp-section hidden" id="otpSectionLogin">
+          <div class="input-group"><label>Enter OTP</label><input type="text" id="loginOtp" placeholder="6-digit OTP" maxlength="6"/></div>
+          <button class="btn-auth" id="verifyOtpLogin">Verify & Sign In</button>
+        </div>
+      </div>
+      <!-- Email login -->
+      <div class="method-form" id="form-email-login">
+        <div class="input-group"><label>Email Address</label><input type="email" id="loginEmail" placeholder="you@example.com"/></div>
+        <div class="input-group"><label>Password</label><input type="password" id="loginPassword" placeholder="••••••••"/></div>
+        <button class="btn-auth" id="emailLoginBtn">Sign In with Email</button>
+      </div>
+      <div class="auth-msg" id="loginMsg"></div>
+    </div>
+
+    <!-- REGISTER -->
+    <div class="auth-panel" id="panel-register">
+      <div class="method-toggle">
+        <button class="method-btn active" data-method="phone">📱 Mobile OTP</button>
+        <button class="method-btn" data-method="email">📧 Email</button>
+      </div>
+      <!-- Phone register -->
+      <div class="method-form active" id="form-phone-register">
+        <div class="input-group"><label>Full Name</label><input type="text" id="regName" placeholder="Your Name"/></div>
+        <div class="input-group">
+          <label>Mobile Number</label>
+          <div class="phone-row"><span class="country-code">+91</span><input type="tel" id="regPhone" placeholder="98765 43210" maxlength="10"/></div>
+        </div>
+        <div id="recaptcha-register"></div>
+        <button class="btn-auth" id="sendOtpReg">Send OTP</button>
+        <div class="otp-section hidden" id="otpSectionReg">
+          <div class="input-group"><label>Enter OTP</label><input type="text" id="regOtp" placeholder="6-digit OTP" maxlength="6"/></div>
+          <button class="btn-auth" id="verifyOtpReg">Verify & Register</button>
+        </div>
+      </div>
+      <!-- Email register -->
+      <div class="method-form" id="form-email-register">
+        <div class="input-group"><label>Full Name</label><input type="text" id="regEmailName" placeholder="Your Name"/></div>
+        <div class="input-group"><label>Email Address</label><input type="email" id="regEmail" placeholder="you@example.com"/></div>
+        <div class="input-group"><label>Password</label><input type="password" id="regEmailPassword" placeholder="Min 6 characters"/></div>
+        <button class="btn-auth" id="emailRegisterBtn">Create Account</button>
+      </div>
+      <div class="auth-msg" id="registerMsg"></div>
+    </div>
+
+    <div class="auth-note">🔒 Secured by Firebase · Your data is encrypted</div>
+  </div>
+</div>
+
+<!-- ===== SOS DEMO MODAL ===== -->
+<div class="modal-overlay" id="sosModal">
+  <div class="sos-modal-box">
+    <div class="sos-ripple-ring rr1"></div>
+    <div class="sos-ripple-ring rr2"></div>
+    <div class="sos-modal-icon">🚨</div>
+    <h2>SOS ALERT ACTIVATED</h2>
+    <p>SafeHer has instantly:</p>
+    <ul class="sos-list">
+      <li>✅ Captured your GPS coordinates</li>
+      <li>✅ Sent SMS to all emergency contacts</li>
+      <li>✅ Notified 3 nearby volunteers</li>
+      <li>✅ Triggered smartwatch vibration alert</li>
+      <li>✅ Started incident recording</li>
+    </ul>
+    <div class="sos-timer-box">Response time: <strong id="sosTimerVal">0.0s</strong></div>
+    <button class="btn-auth" id="closeSosModal">Close Demo</button>
+  </div>
+</div>
+
+<script type="module" src="auth.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>
